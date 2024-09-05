@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Love Compatibility Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white; /* Light background for better contrast */
+        }
+
+        .form-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            width: 100%;
+            max-width: 360px; /* Adjusted for smaller container */
+            box-sizing: border-box;
+            margin: 1rem;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #4f46e5;
+        }
+
+        label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 113, 236, 0.3);
+            outline: none;
+        }
+
+        .gender-radio {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .gender-radio input {
+            margin-right: 0.5rem;
+        }
+
+        button {
+            background-color: #4f46e5;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #3730a3;
+        }
+
+        button:active {
+            background-color: #2c28a7;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        #result h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        #compatibilityScore {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 0.75rem;
+        }
+
+        #compatibilityDetails {
+            font-size: 0.875rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>LOVE %</h1>
+        <form id="loveCalculatorForm" class="space-y-4">
+            <div class="flex flex-wrap gap-4">
+                <div class="gender-radio">
+                    <input type="radio" id="userMale" name="gender1" value="Male" checked>
+                    <label for="userMale">Male</label>
+                </div>
+                <div class="gender-radio">
+                    <input type="radio" id="userFemale" name="gender1" value="Female">
+                    <label for="userFemale">Female</label>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                <div class="w-full md:w-1/3">
+                    <label for="name1">Your Name</label>
+                    <input type="text" id="name1" name="name1" required>
+                </div>
+                <div class="flex justify-center items-center">
+                    <i class="fa-solid fa-heart" style="color: #ed0c0c; font-size: 50px;"></i>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <label for="name2">Partner's Name</label>
+                    <input type="text" id="name2" name="name2" required>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <div class="gender-radio">
+                    <input type="radio" id="partnerMale" name="gender2" value="Male">
+                    <label for="partnerMale">Male</label>
+                </div>
+                <div class="gender-radio">
+                    <input type="radio" id="partnerFemale" name="gender2" value="Female" checked>
+                    <label for="partnerFemale">Female</label>
+                </div>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Result:</h2>
+            <p id="compatibilityScore">%</p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+
+            if (!name1 || !name2) {
+                alert("Please enter both names.");
+                return;
+            }
+
+            // Count occurrences of "l", "o", "v", "e", "s" in the combined lowercase names
+            const loves = ["l", "o", "v", "e", "s"];
+            const jointNames = (name1 + name2).toLowerCase();
+            const countArray = loves.map(function(item) {
+                return jointNames.split(item).length - 1;
+            });
+
+            // Calculate the compatibility score based on counts
+            const totalScore = countArray.reduce((acc, val) => acc + val, 0);
+            const compatibilityPercentage = Math.min(totalScore * 10, 100); // Limit to a maximum of 100%
+
+            // Display the result
+            document.getElementById('compatibilityScore').textContent = `${compatibilityPercentage}%`;
+            document.getElementById('compatibilityDetails').textContent = 'Your cosmic alignment is out of this world!';
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        document.getElementById('loveCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculate();
+        });
+    </script>
+</body>
+</html>
