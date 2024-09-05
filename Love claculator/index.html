@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use our love meter to determine the level of love compatibility between you and your partner. Find out your chances of a successful relationship.">
+    <meta name="keywords" content="love meter, love calculator, love percentage %, true love calculator,love calculator prank,how to say i love you on a calculator,how to write i love you on a calculator,true love calculator soulmate,love calculator by age,love calculator by name and date of birth,100 love calculator,how to do flames love calculator">
+    <meta name="author" content="love">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="https://e7.pngegg.com/pngimages/221/349/png-clipart-love-test-calculator-love-calculator-android-android-love-heart-thumbnail.png" type="image/png">
+   
+
+    <title> Love Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="canonical" href="https://the-tools-world.netlify.app">
+    <!-- Basic SEO meta tags here -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The Love Calculator",
+      "url": https://the-tools-world.netlify.app/",
+      "description": "Use our love meter to determine the level of love compatibility between you and your partner. Find out your chances of a successful relationship.",
+      "keywords": "love meter, love calculator, love percentage %, true love calculator,love calculator prank,how to say i love you on a calculator,how to write i love you on a calculator,true love calculator soulmate,love calculator by age,love calculator by name and date of birth,100 love calculator,how to do flames love calculator"
+    }
+    </script>
+ <style>
+      /* Custom styles for the hover effect */
+        .nav-link:hover {
+            background-color: #ec4899; /* Tailwind's pink-500 color */
+            color: white;
+            border-radius: 4px;
+        }
+        /* Hide scrollbar */
+        .scrollable {
+            overflow-x: auto;
+            -ms-overflow-style: none;  /* Internet Explorer and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollable::-webkit-scrollbar {
+            display: none;  /* Safari and Chrome */
+        }
+        
+    #love-calculator.container  {
+  max-width: 600px;
+ margin: 0 auto; /* Centers the section horizontally */
+  padding: 0 0px; /* Adds some padding to prevent content from touching the edges */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+}
+
+#love-quote.container, #love-calculator-meter.container {
+  max-width: 736px;
+  margin: 0 auto; /* Centers the section horizontally */
+  padding: 0 0px; /* Adds some padding to prevent content from touching the edges */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+}
+
+#description.container {
+  max-width: 736px;
+  margin: 0 auto; /* Centers the section horizontally */
+  padding: 0 0px; /* Adds some padding to prevent content from touching the edges */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+}
+
+        /* Custom Styles */
+        .logo-gradient {
+            background: linear-gradient(45deg, red, pink,  blue,yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sidebar {
+            transition: transform 0.3s ease;
+        }
+        .sidebar-open {
+            transform: translateX(0);
+        }
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .footer {
+            background-color: #f1f1f1;
+            padding: 16px;
+        }
+        .social-icons a {
+            margin-right: 8px;
+            
+            transition: color 0.3s;
+        }
+        
+        .result-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .result-card h2 {
+            font-weight: bold;
+        }
+        .input-field {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .social-icons a {
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a.facebook {
+            color: #3b5998; /* Facebook color */
+        }
+        .social-icons a.twitter {
+            color: #1da1f2; /* Twitter color */
+        }
+        .social-icons a.linkedin {
+            color: #0077b5; /* LinkedIn color */
+        }
+        .social-icons a.whatsapp {
+            color: #25D366; /* WhatsApp color */
+        }
+        .social-icons a.email {
+            color: #007bff; /* Email color (could be any color you choose) */
+        }
+        .social-icons a:hover {
+            opacity: 0.8; /* Change opacity on hover */
+        }
+        
+        /* Default state of the sidebar */
+
+
+  .sidebar-closed {
+    transform: translateX(100%);
+  }
+  .sidebar-open {
+    transform: translateX(0);
+  }
+  .close-btn {
+    color: gray;
+    font-size: 2rem; /* Larger text for the close button */
+    font-weight: bold; /* Optional: Make the text bold */
+  }
+  .overlay {
+    display: none; /* Hide overlay by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 30; /* Below the sidebar, but above other content */
+  }
+  .overlay-visible {
+    display: block; /* Show overlay */
+  }
+
+/* Transition effect for link hover */
+a {
+    transition: background-color 0.3s ease;
+}
+
+        
+        
+        /* In your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+.dancing-script {
+  font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+}
+
+
+    </style>
+    
+    
+</head>
+<body class="font-sans bg-gray-100">
+    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <div class="logo text-2xl font-bold logo-gradient dancing-script  ">The Love Calculator</div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#home" class="text-gray-700 hover:text-gray-900">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-gray-900">About</a>
+                <a href="#services" class="text-gray-700 hover:text-gray-900">Services</a>
+                <a href="#contact" class="text-gray-700 hover:text-gray-900">Contact</a>
+            </nav>
+            <button class="md:hidden text-gray-700" id="menu-btn">☰</button>
+        </div>
+        <nav class="bg-purple-700 ">
+        <div class="scrollable flex flex-nowrap">
+        <a href="/index.html" class="nav-link text-white text-sm px-1 py-2 mx-2">Home</a>
+        <a href="/about-us.html" class="nav-link text-white text-sm px-1 py-2 mx-2">About Us</a>
+    
+        <a href="/contact-us.html" class="nav-link text-white text-sm px-1 py-2 mx-2">Contact Us</a>
+        <a href="#" class="nav-link text-white text-sm px-1 py-2 mx-2">Our Blog</a>
+      
+       
+        </div>
+    </nav>
+    </header>
+
+    <<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full sidebar-closed transition-transform duration-300 z-40 bg-gray-200" id="mobileSidebar">
+    <div class="flex justify-end p-4">
+        <button id="close-btn" class="close-btn">&times;</button> <!-- &times; for the close icon -->
+    </div>
+    <nav class="p-4">
+        <a href="#home" class="block py-2 text-gray-700 hover:bg-pink-500 hover:text-white transition-colors duration-300">Home</a>
+        <a href="#about" class="block py-2 text-gray-700 hover:bg-pink-500 hover:text-white transition-colors duration-300">About</a>
+        <a href="#services" class="block py-2 text-gray-700 hover:bg-pink-500 hover:text-white transition-colors duration-300">Services</a>
+        <a href="#contact" class="block py-2 text-gray-700 hover:bg-pink-500 hover:text-white transition-colors duration-300">Contact</a>
+    </nav>
+</aside>
+    <main class="pt-16 md:pt-20 px-4">
+     
+        <section id="welcome" class="text-center py-12">
+            <h1 class="text-2xl font-bold mb-4"> Love calculator • Calculate love percentage
+</h1>
+<p>Here is the <strong>Love Calculator </strong>that lets you calculate love compatibility and your chances of a successful relationship</p>
+            <button class="text-blue-500 underline">
+                <i class="fas fa-share-alt"></i> Share this page
+            </button>
+               <h1>Share This Page</h1>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u= url" target="_blank" class="facebook" title="Share on Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url= Explore our responsive website with a colorful logo, love calculator, and engaging content. Calculate your love compatibility now! YOUR_URL" target="_blank" class="twitter" title="Share on Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url= Explore our responsive website with a colorful logo, love calculator, and engaging content. Calculate your love compatibility now! YOUR_URL" target="_blank" class="linkedin" title="Share on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://wa.me/?text=Explore our responsive website with a colorful logo, love calculator, and engaging content. Calculate your love compatibility now! YOUR_URL" target="_blank" class="whatsapp" title="Share on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:?subject=Calculate Yur Lve %=Explore our responsive website with a colorful logo, love calculator, and engaging content. Calculate your love compatibility now! YOUR_URL" target="_blank" class="email" title="Share via Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+        </section>
+        
+       <section id="love-calculator" class="container  ">
+        <div class="card">
+            <h2 class="text-2xl font-bold mb-4 text-center text-pink-500">Love Calculator</h2>
+            <form id="loveCalculatorForm" class="space-y-4">
+                <div class="mb-4">
+                    <label for="name1" class="block text-gray-700 font-semibold mb-1">Your Name</label>
+                    <input type="text" id="name1" class="input-field" placeholder="Enter Your Name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="name2" class="block text-gray-700 font-semibold mb-1">Patner's Name</label>
+                    <input type="text" id="name2" class="input-field" placeholder="Enter Patner's Name" required>
+                </div>
+                <button type="submit" class="bg-pink-500 text-white px-4 py-2 rounded-md shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-colors">
+                    Calculate
+                </button>
+            </form>
+            <div id="result" class="hidden mt-6 result-card">
+                <h2 id="compatibilityScore" class="text-3xl font-bold mb-2 text-gray-800"></h2>
+                <p id="compatibilityDetails" class="text-gray-600"></p>
+            </div>
+        </div>
+    </section>
+
+        
+        <section id="love-quote" class="container ">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-2">Love Quote</h2>
+                <p class="text=xl mb-2">Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day.</p>
+            </div>
+        </section>
+        
+<section id="love-calculator-meter" class="container ">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-2">Love Meter • Find compatibility</h2>
+                <p class="text=xl mb-2">Do you share a special connection with someone? Is he or she your special person? This Love meter will help you find out. This is a simple Love Calculator which displays love percentage based on names. Enter your name and the name of your partner/lover/crush to find Love compatibility & chances of successful love relationship.</p>
+            </div>
+        </section>
+
+  
+        
+        <section id="love-quote" class="container ">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-2">How does a Love Calculator work? The Love meter Algorithm</h2>
+                <p class="text=xl mb-2">Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day.Love calculation by a love calculator is based on certain algorithm. Once two names are entered, this calculator matches the name of the first person against some love, romance and relationship related parameters. Similarly the name of your partner/lover is matched against the same parameters. The love calculator's algorithm then detects how many parameters you both have in common. It is based on this analysis that the calculator reaches the conclusion and displays love percentage or compatibility.</p>
+            </div>
+        </section>
+        
+                <section id="love-quote" class="container ">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-2">Love Intensity Calculator • Love Tester to test love
+</h2>
+                <p class="text=xl mb-2">Love meter is an online <strong>Love Detector</strong> with which you can measure the percentage of love compatibility and chances of successful relationship between two people.</p>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer text-center">
+        <div class="flex justify-center items-center mb-4">
+          <div class="logo text-2xl font-bold logo-gradient dancing-script   ">The Love Calculator</div>
+          </hr>
+            <p class="text-gray-600">© 2024 My Website. All rights reserved.</p>
+        </div>
+        <div class="social-icons ">
+            <a href="#" class="text-blue-400"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-red-600"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-pink-600"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-blue-700"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-red-700"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+        <div class="mt-2">
+             <a href="#" class="text-gray-600">Home</a> | 
+            <a href="#" class="text-gray-600">Privacy Policy</a> | 
+            <a href="#" class="text-gray-600">Terms of Service</a> | 
+            <a href="#" class="text-gray-600">Contact Us</a>|
+            <a href="#" class="text-gray-600">About Us</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('mobileSidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        function calculate() {
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+
+            if (!name1 || !name2) {
+                alert("Please enter both names.");
+                return;
+            }
+
+            const loves = ["l", "o", "v", "e", "s"];
+            const jointNames = (name1 + name2).toLowerCase();
+            const countArray = loves.map(function(item) {
+                return jointNames.split(item).length - 1;
+            });
+
+            const totalScore = countArray.reduce((acc, val) => acc + val, 0);
+            const compatibilityPercentage = Math.min(totalScore * 10, 100);
+
+            document.getElementById('compatibilityScore').textContent =  `Result: ${compatibilityPercentage}%`;
+            document.getElementById('compatibilityDetails').textContent = 'Your cosmic alignment is out of this world!';
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        document.getElementById('loveCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculate();
+        });
+
+
+document.getElementById('menu-btn').addEventListener('click', function() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('sidebar-closed');
+    sidebar.classList.add('sidebar-open');
+    overlay.classList.add('overlay-visible');
+});
+
+document.getElementById('close-btn').addEventListener('click', function() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('sidebar-open');
+    sidebar.classList.add('sidebar-closed');
+    overlay.classList.remove('overlay-visible');
+});
+
+document.getElementById('overlay').addEventListener('click', function() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('sidebar-open');
+    sidebar.classList.add('sidebar-closed');
+    overlay.classList.remove('overlay-visible');
+});
+
+       
+    </script>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyASeGpAHA6Q2-0jCbqn5X7k140RPrW3vGw",
+          authDomain: "real-websites-11abc.firebaseapp.com",
+          projectId: "real-websites-11abc",
+          storageBucket: "real-websites-11abc.appspot.com",
+          messagingSenderId: "458564914278",
+          appId: "1:458564914278:web:e02bdeb1de14be9bccf1a7",
+          measurementId: "G-BVWY73P7VG"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
